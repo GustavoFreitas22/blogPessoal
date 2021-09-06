@@ -21,6 +21,10 @@ export class TemaService {
     return this.http.get<Tema[]>('https://freitasblog.herokuapp.com/tema/all', this.token);
   }
 
+  getByIdTema(id: number): Observable<Tema>{
+    return this.http.get<Tema>(`https://freitasblog.herokuapp.com/tema/${id}`, this.token)
+  }
+
   postTema(tema:Tema): Observable<Tema>{
     return this.http.post<Tema>('https://freitasblog.herokuapp.com/tema/post', tema, this.token)
   }
@@ -28,4 +32,9 @@ export class TemaService {
   putTema(tema:Tema): Observable<Tema>{
     return this.http.put<Tema>('https://freitasblog.herokuapp.com/tema/put', tema, this.token)
   }
+
+  deleteTema(id: number){
+    return this.http.delete(`https://freitasblog.herokuapp.com/tema/remove/${id}`, this.token)
+  }
+
 }
